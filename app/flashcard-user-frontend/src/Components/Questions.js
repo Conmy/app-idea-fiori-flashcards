@@ -6,7 +6,8 @@ import {
 import { useEffect, useState } from "react";
 import { Flashcard } from "./Flashcard";
 import { spacing } from "@ui5/webcomponents-react-base";
-const axios = require('axios');
+
+import QuestionService from '../Services/QuestionService';
 
 export default function Questions() {
 
@@ -23,36 +24,10 @@ export default function Questions() {
 		setScoreText(`Correct: ${correct} Incorrect: ${wrong}`);
 	};
 
-	// Not immutable - for shame!!
-	const shuffleArray = (arr) => {
-		for (let i = arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
-	}
-
 	useEffect(() => {
 		const fetchData = async () => {
-			try {
-				const quests = await axios.get('/questions/Questions');
-				const answers = quests.data.value.map((item) => item.answer);
-
-				const dataResult = quests.data.value.map((item) => {
-					const otherAnswers = answers.filter(ans => ans !== item.answer);
-					return {
-						question: item.question,
-						answer: item.answer,
-						options: shuffleArray([
-							item.answer,
-							...otherAnswers.slice(-3)
-						])
-					};
-				});
-				setQuestions(dataResult);
-			} catch (error) {
-				console.error(error);
-			}
+			const dataResult = await QuestionService.getQuestions();
+			setQuestions(dataResult);
 		};
 
 		fetchData()

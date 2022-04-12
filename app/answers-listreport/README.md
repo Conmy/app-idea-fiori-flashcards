@@ -1,16 +1,16 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Mar 24 2022 14:06:58 GMT+0000 (Greenwich Mean Time)|
+|**Generation Date and Time**<br>Mon Mar 28 2022 11:22:14 GMT+0100 (Irish Standard Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.5.1|
 |**Generation Platform**<br>Visual Studio Code|
 |**Floorplan Used**<br>List Report Object Page V4|
 |**Service Type**<br>Local Cap|
-|**Service URL**<br>/flashcard/
+|**Service URL**<br>/answers/
 |**Module Name**<br>answers-listreport|
-|**Application Title**<br>Answers|
-|**Namespace**<br>me.conmy.appideas.flashcards|
+|**Application Title**<br>Manage Answers|
+|**Namespace**<br>me.conmy.appidea.flashcard|
 |**UI5 Theme**<br>sap_fiori_3|
 |**UI5 Version**<br>1.99.0|
 |**Enable Code Assist Libraries**<br>False|

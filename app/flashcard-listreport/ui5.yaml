@@ -12,7 +12,7 @@ server:
       - path: /flashcard
         url: http://localhost:4004
       ui5:
-        path: 
+        path:
         - /resources
         - /test-resources
         url: https://ui5.sap.com

@@ -1,7 +1,7 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "me.conmy.appideas.flashcards.answerslistreport",
+        "id": "me.conmy.appidea.flashcard.answerslistreport",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -24,7 +24,7 @@
             "id": "ui5template.fiorielements.v4.lrop",
             "version": "1.0.0"
         }
-    },
+    }, 
     "sap.ui": {
         "technology": "UI5",
         "icons": {

@@ -4,7 +4,7 @@ using { managed, cuid } from '@sap/cds/common';
 
 define entity Flashcards : managed, cuid {
     question  : String(255)                 @title : 'Question'; // TODO: Consider i18n for titles
-    answer : Association to one Answer;
+    answer : Association to one Answer      @title : 'Answer';
 };
 
 annotate Flashcards with @(

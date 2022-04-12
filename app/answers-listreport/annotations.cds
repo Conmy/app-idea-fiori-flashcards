@@ -4,17 +4,26 @@ annotate service.Answers with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Value : id,
-            Label : 'id',
+            Value : answer,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'answer',
-            Value : answer,
+            Value : createdAt,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdBy,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : modifiedAt,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : modifiedBy,
         },
     ]
 );
-
 annotate service.Answers with @(
     UI.FieldGroup #GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
@@ -37,7 +46,6 @@ annotate service.Answers with @(
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'answer',
                 Value : answer,
             },
         ],

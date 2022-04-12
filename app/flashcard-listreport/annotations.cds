@@ -22,6 +22,9 @@ annotate service.Flashcards with @(UI : {
             {
                 Value : question
             },
+            {
+                Value : answer_ID
+            }
 
         ]
     },

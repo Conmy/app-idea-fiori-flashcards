@@ -12,6 +12,22 @@ annotate cuid with {
     );
 }
 
-annotate service.Answer with {
-    ID @UI.Hidden: true;
+annotate service.Flashcards with {
+    answer @Common : {
+        Text : answer.answer,
+        TextArrangement : #TextOnly,
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            Label : 'Answer', // TODO: i18n?
+            CollectionPath : 'Answer',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : answer_ID,
+                    ValueListProperty : 'ID'
+                },
+
+            ]
+        }
+    };
 }

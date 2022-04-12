@@ -101,7 +101,8 @@
                                         "route": "FlashcardsObjectPage"
                                     }
                                 }
-                            }
+                            },
+                            "initialLoad": "Enabled"
                         }
                     }
                 },

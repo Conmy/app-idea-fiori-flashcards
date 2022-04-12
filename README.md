@@ -1,25 +1,18 @@
-# Getting Started
+# Fiori Flashcard Application
 
-Welcome to your new project.
+Taking inspiration from the app-ideas github, Implement a flashcard application
+using SAPui5, CAP, and ui5 Web Components for React.
 
-It contains these folders and files, following our recommended project layout:
+## Developing
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+React apps were created using `create-react-app`.
 
+Run the app locally by running `npm run start:all`.
 
-## Next Steps
+### TODO
 
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+Outstanding application features:
 
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+- [ ] Get the app configured for deployment to SAP BTP using Cloud Foundry.
+  - [ ] Deploy using an MTA.
+- [ ] Allow for filtering of flashcards based on `Topic`.

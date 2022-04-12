@@ -1,7 +1,7 @@
 import { Bar, FilterBar, FilterGroupItem, Input, Option, Select, Title } from '@ui5/webcomponents-react';
 import Questions from './Components/Questions';
 
-export default function MyApp() {
+export default function FlashcardApp() {
 
     const handleSearchFieldChange = () => {
         alert('Search Field Triggered');

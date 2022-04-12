@@ -1,12 +1,11 @@
 import {
-	Bar, Title, Text,
-	BusyIndicator, Button,
+	Bar, Text,
+	BusyIndicator,
 	ResponsiveGridLayout,
 } from "@ui5/webcomponents-react";
 import { useEffect, useState } from "react";
 import { Flashcard } from "./Flashcard";
 import { spacing } from "@ui5/webcomponents-react-base";
-import { sapUiContentPadding } from "@ui5/webcomponents-react-base/dist/styling/spacing";
 
 function timeout(stallTime = 2000) {
 	return new Promise(resolve => setTimeout(resolve, stallTime));

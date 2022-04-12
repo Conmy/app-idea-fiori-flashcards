@@ -1,0 +1,7 @@
+---
+applications:
+  - name: flashcards-questions
+    path: build/
+    instances: 1
+    memory: 256M
+    buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git

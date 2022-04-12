@@ -6,15 +6,7 @@ import {
 import { useEffect, useState } from "react";
 import { Flashcard } from "./Flashcard";
 import { spacing } from "@ui5/webcomponents-react-base";
-
-function timeout(stallTime = 2000) {
-	return new Promise(resolve => setTimeout(resolve, stallTime));
-}
-
-async function stall(data) {
-	await timeout();
-	return data;
-}
+const axios = require('axios');
 
 export default function Questions() {
 
@@ -31,30 +23,36 @@ export default function Questions() {
 		setScoreText(`Correct: ${correct} Incorrect: ${wrong}`);
 	};
 
-	useEffect(() => {
-		const allQuestions = [
-			{
-				question: 'What is your name?',
-				answer: 'I am Arthur, King of the Britons',
-				options: [
-					'I am Arthur, King of the Britons',
-					'Jim',
-					'Sir Gadabout'
-				]
-			},
-			{
-				question: 'What is your quest?',
-				answer: 'I seek the Holy Grail',
-				options: [
-					'I want to be a doctor',
-					"I've come to rescue the princess",
-					'I seek the Holy Grail'
-				]
-			}];
+	// Not immutable - for shame!!
+	const shuffleArray = (arr) => {
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
+	}
 
+	useEffect(() => {
 		const fetchData = async () => {
-			const result = await stall(allQuestions);
-			setQuestions(result);
+			try {
+				const quests = await axios.get('/questions/Questions');
+				const answers = quests.data.value.map((item) => item.answer);
+
+				const dataResult = quests.data.value.map((item) => {
+					const otherAnswers = answers.filter(ans => ans !== item.answer);
+					return {
+						question: item.question,
+						answer: item.answer,
+						options: shuffleArray([
+							item.answer,
+							...otherAnswers.slice(-3)
+						])
+					};
+				});
+				setQuestions(dataResult);
+			} catch (error) {
+				console.error(error);
+			}
 		};
 
 		fetchData()
@@ -117,7 +115,6 @@ export default function Questions() {
 			</ResponsiveGridLayout>
 			<Bar design="Footer">
 				<Text slot="startContent">{scoreText}</Text>
-				{/*<Button slot="endContent">End Button</Button>*/}
 			</Bar>
 		</>
 	);

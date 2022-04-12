@@ -9,14 +9,7 @@
     "build": {},
     "requires": {
       "db": {
-        "kind": "sqlite",
-        "model": [
-          "./db/data-model.cds",
-          "./app/services.cds"
-        ],
-        "credentials": {
-          "database": "local.db"
-        }
+        "kind": "sqlite"
       },
       "[production]": {
         "db": {
@@ -33,10 +26,12 @@
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.96.6",
+    "concurrently": "^7.1.0",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
     "start": "cds run",
+    "start:all": "concurrently 'cds watch' 'npm --prefix app/flashcard-user-frontend start'",
     "watch": "cds watch",
     "deploy:local": "cds deploy ./db/data-model.cds ./app/services.cds --to sqlite:local.db",
     "reset:db": "rm -f local.db && npm run deploy:local",

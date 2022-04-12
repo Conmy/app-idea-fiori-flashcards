@@ -16,3 +16,4 @@ Outstanding application features:
 - [ ] Get the app configured for deployment to SAP BTP using Cloud Foundry.
   - [ ] Deploy using an MTA.
 - [ ] Allow for filtering of flashcards based on `Topic`.
+- [ ] Ability to add a new answer to the Flashcard when creating a new one.

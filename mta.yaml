@@ -15,6 +15,7 @@ build-parameters:
     - npm --prefix app/flashcard-user-frontend run build
 
 modules:
+# ---------- Backend API Service ----------------
 - name: app-idea-fiori-flashcard-srv
   type: nodejs
   path: gen/srv
@@ -28,7 +29,7 @@ modules:
     buildpack: nodejs_buildpack
   build-parameters:
     builder: npm-cli
-
+# ---------- DB Deployment service --------------
 - name: app-idea-fiori-flashcard-db-deployer
   type: hdb
   path: gen/db
@@ -36,11 +37,16 @@ modules:
   - name: app-idea-fiori-db
   parameters:
     buildpack: nodejs_buildpack
-
+# ---------- HTML5 Destination Service ----------
 - name: app-idea-fiori-flashcard-destinations
   type: com.sap.application.content
   requires:
-  - name:
+  - name: app-idea-flashcard-repo-host 
+    parameters:
+      service-key:
+        name: app-idea-flashcard-repo-host-key
+  - name: srv-api
+
 
 resources:
 # ---------- HANA HDI-SHARED RESOURCE -----------
@@ -49,3 +55,28 @@ resources:
   parameters:
     service: hana
     service-plan: hdi-shared
+# ---------- HTML5 REPO RESOURCE ----------------
+- name: app-idea-flashcard-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+# ---------- DESTINATION RESOURCE ---------------
+- name: app-idea-flashcard-destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+      init_data:
+        instance:
+          destinations:
+          - Name: ui5
+            Authentication: NoAuthentication
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+ 

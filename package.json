@@ -36,10 +36,13 @@
     "deploy:local": "cds deploy ./db/data-model.cds ./app/services.cds --to sqlite:local.db",
     "reset:db": "rm -f local.db && npm run deploy:local",
     "watch-flashcard-listreport": "cds watch --open flashcard-listreport/webapp/index.html?sap-ui-xx-viewCache=false#fe-lrop-v4",
-    "watch-answers-listreport": "cds watch --open answers-listreport/webapp/index.html?sap-ui-xx-viewCache=false#fe-lrop-v4"
+    "watch-answers-listreport": "cds watch --open answers-listreport/webapp/index.html?sap-ui-xx-viewCache=false#fe-lrop-v4",
+    "watch-flashcard-user-frontend": "npm --prefix app/flashcard-user-frontend run start"
   },
   "eslintConfig": {
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended"
+    ],
     "env": {
       "es2020": true,
       "node": true,
